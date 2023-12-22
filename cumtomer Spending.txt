@@ -1,7 +1,7 @@
 ----- cumtomer Spending
 
 SELECT
-     c.customer_name, ROUND(SUM(i.total_price), 6)
+     c.customer_name, FORMAT(SUM(i.total_price), 6)
 FROM 
      customer c
 INNER JOIN
@@ -11,4 +11,4 @@ GROUP BY
 HAVING 
      SUM(i.total_price)<0.25*(SELECT AVG(total_price) FROM invoice)
 ORDER BY
-      ROUND(SUM(i.total_price), 6) DESC;
+      FORMAT(SUM(i.total_price), 6) DESC;
